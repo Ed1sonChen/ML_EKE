@@ -76,6 +76,20 @@ conda install -c conda-forge netcdf4 -y
 conda install -c conda-forge netcdf-fortran -y
 conda install -c conda-forge mpich -y
 ```
+#### Compiling the FMS shared code
+
+```bash
+mkdir -p build/fms/
+(cd build/fms; rm -f path_names; \
+../../src/mkmf/bin/list_paths -l ../../src/FMS; \
+../../src/mkmf/bin/mkmf -t ../../src/mkmf/templates/osx-gcc10.mk -p libfms.a -c "-Duse_libMPI -Duse_netCDF" path_names)
+```
+On your platform, replace ```osx-gcc10.mk``` with the appropriate template file.
+
+The above creates the file ```build/fms/Makefile``` which you can use to build the fms library:
+```bash
+(cd build/fms/; source ../env; make NETCDF=3 REPRO=1 libfms.a -j)
+```
 
 #### Compiling MOM6 in ocean-only mode
 
