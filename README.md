@@ -86,13 +86,13 @@ mkdir -p build/ocean_only/
 ../../src/mkmf/bin/mkmf -t ../../src/mkmf/templates/osx-gcc10.mk -o '-I../fms' -p MOM6 -l '-L../fms -lfms' path_names)
 ```
 
-On your platform, replace ```bash osx-gcc10.mk ``` with the appropriate template file.
+On your platform, replace ```osx-gcc10.mk ``` with the appropriate template file.
 
 Finally, compile the MOM6 ocean-only model with:
 ```bash
 (cd build/ocean_only/; source ../env; make REPRO=1 MOM6 -j)
 ```
-If successful you should now have an ocean executable: ```bash build/ocean_only/MOM6 ```.
+If successful you should now have an ocean executable: ```build/ocean_only/MOM6 ```.
 
 ### Running a test case
 
